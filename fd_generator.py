@@ -23,7 +23,7 @@ def get_hex_list(bili,panel_number): #input a list of 28*7 binaries, return a li
 
 def get_one_frame_string(image_number): #{{...},{},{},{}}
 
-	im = Image.open(str(image_number)+".png").convert('1')
+	im = Image.open('eye_blink/m' + str(image_number)+".png").convert('1')
 	ori_li = list(im.getdata()) #255-white  0-black
 	new_li = [] #1-white  0-black
 	for p in ori_li:
@@ -43,9 +43,9 @@ def get_one_frame_string(image_number): #{{...},{},{},{}}
 
 f = open('arrays.txt','w')
 whole_string = '{'
-for i in range(1,16):
+for i in range(5):
 	whole_string += get_one_frame_string(i)
-	if (i != 15):
+	if (i != 4):
 		whole_string += ','
 whole_string += '}'
 f.write(whole_string)
