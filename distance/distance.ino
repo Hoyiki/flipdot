@@ -18,7 +18,6 @@ int URPWM = 3; // PWM Output 0－25000US，Every 50US represent 1cm
 int URTRIG=5; // PWM trigger pin
  
 unsigned int Distance=0;
-uint8_t EnPwmCmd[4]={0x44,0x02,0xbb,0x01};    // distance measure command
  
 void setup()
 {                                 // Serial initialization
@@ -40,6 +39,7 @@ void PWM_Mode_Setup()
   pinMode(URPWM, INPUT);                      // Sending Enable PWM mode command
   
 //  for(int i=0;i<4;i++)
+
 //  {
 //      Serial.write(EnPwmCmd[i]);
 //  } 

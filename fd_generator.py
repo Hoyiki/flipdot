@@ -1,5 +1,7 @@
 from __future__ import print_function
 from PIL import Image, ImageDraw
+import optparse
+
 
 # #############################################
 #28*28 black and white
@@ -23,7 +25,7 @@ def get_hex_list(bili,panel_number): #input a list of 28*7 binaries, return a li
 
 def get_one_frame_string(image_number): #{{...},{},{},{}}
 
-	im = Image.open('eye_blink/m' + str(image_number)+".png").convert('1')
+	im = Image.open('tencent/' + str(image_number)+".png").convert('1')
 	ori_li = list(im.getdata()) #255-white  0-black
 	new_li = [] #1-white  0-black
 	for p in ori_li:
@@ -41,40 +43,15 @@ def get_one_frame_string(image_number): #{{...},{},{},{}}
 	one_frame += "}"
 	return (one_frame)
 
-f = open('arrays.txt','w')
+f = open('export_arrays.txt','w')
 whole_string = '{'
-for i in range(5):
+for i in range(1,5):
 	whole_string += get_one_frame_string(i)
 	if (i != 4):
 		whole_string += ','
 whole_string += '}'
 f.write(whole_string)
 f.close()
-#################################################
-#convert any image to black&white with size 28*28
 
-# im = Image.open("wave.png").convert('1')
-# im.thumbnail((28,28))
-# im.show()
-
-# # im = Image.open("f28.jpg").convert('1')
-# print(im.size)
-# newimdata = []
-
-# # #need to fill in the blank if the original image is not 28*28
-# # newimdata += [(255,255)]*(5*28)
-
-# # for p in list(im.getdata()):
-# # 	if p[0] < 160:
-# # 		newimdata.append((0,255))
-# # 	else:
-# # 		newimdata.append((255,255))
-
-# # newimdata += [(255,255)]*(6*28)
-
-
-# newim = Image.new(im.mode,(28,28))
-# newim.putdata(newimdata)
-# #newim.show()
 
 
