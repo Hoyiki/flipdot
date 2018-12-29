@@ -2,6 +2,15 @@ from __future__ import print_function
 from PIL import Image, ImageDraw
 import optparse
 
+parser = optparse.OptionParser()
+parser.add_option('-f', '--folder',
+    action="store", dest="folder", default="christmas")
+parser.add_option('-n', '--number',
+    action="store", dest="number", default="1")
+options, args = parser.parse_args()
+
+total_number = int(options.number)
+folder_name = options.folder
 
 # #############################################
 #28*28 black and white
@@ -25,7 +34,7 @@ def get_hex_list(bili,panel_number): #input a list of 28*7 binaries, return a li
 
 def get_one_frame_string(image_number): #{{...},{},{},{}}
 
-	im = Image.open('christmas/' + str(image_number)+".png").convert('1')
+	im = Image.open(folder_name + '/' + str(image_number)+".png").convert('1')
 	ori_li = list(im.getdata()) #255-white  0-black
 	new_li = [] #1-white  0-black
 	for p in ori_li:
@@ -43,11 +52,11 @@ def get_one_frame_string(image_number): #{{...},{},{},{}}
 	one_frame += "}"
 	return (one_frame)
 
-f = open('export_arrays.txt','w')
+f = open('export_arrays_' + folder_name + '.txt','w')
 whole_string = '{'
-for i in range(1,6): #need to change!!!
+for i in range(1,total_number+1):
 	whole_string += get_one_frame_string(i)
-	if (i != 5): #need to change!!!
+	if (i != total_number):
 		whole_string += ','
 whole_string += '}'
 f.write(whole_string)
