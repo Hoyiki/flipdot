@@ -15,4 +15,3 @@ options, args = parser.parse_args()
 im = Image.open(options.image_loc).convert('1')
 im.thumbnail((28,28))
 im.show()
-

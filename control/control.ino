@@ -14,7 +14,7 @@ void write_frame(int i)
   byte one_frame[4][32] = {{}};
   for (int r = 0; r < 4; r ++){
     for (int l = 0; l < 32; l ++){
-      one_frame[r][l] = pgm_read_byte(&frames[i][r][l]);
+      one_frame[r][l] = pgm_read_byte(&frames[i-1][r][l]);
     }
   }
   Serial.write(one_frame[0], 32);
@@ -23,29 +23,27 @@ void write_frame(int i)
   Serial.write(one_frame[3], 32);
 }
 
-void setup() 
+void setup()
 {
   Serial.begin(9600);
   pinMode(txden, OUTPUT);
-  digitalWrite(txden, HIGH); // master 
-  write_frame(0); 
+  digitalWrite(txden, HIGH); // master
+  write_frame(0);
 }
 
 void showtime(){
-    write_frame(0); 
-    delay(500); 
-    write_frame(1); 
-    delay(500); 
-    write_frame(2); 
-    delay(500); 
-    write_frame(3); 
-    delay(500); 
-    write_frame(4); 
-    delay(500); 
+    write_frame(1); //corresponding the image index in the folder
+    delay(500); //1000 is 1 second
+    write_frame(2);
+    delay(500);
+    write_frame(3);
+    delay(500);
+    write_frame(4);
+    delay(500);
+    write_frame(5);
+    delay(500);
 }
 
-
-
-void loop() { 
+void loop() {
   showtime();
 }
