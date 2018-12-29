@@ -1,15 +1,19 @@
 # 28*28 Flip-Dot Display with Arduino and RS485 Use Guide
 
-In this instruction, I will show a way to load a series of images into the 28*28 Flip-Dot Display XY5 by Alfazeta via Arduino. You can prepare all the 28*28 images in png formats. We first need to use a python script to translate all the images into a 3-layer hex array, then copy the big array into the Arduino code. Ardunio will allow you to decide how the animation be like with all the frames. You can even add sensors and make the display interactive!
+In this instruction, I will show a way to load a series of images into the 28\*28 Flip-Dot Display XY5 by Alfazeta via Arduino. You can prepare all the 28\*28 images in png formats. We first need to use a python script to translate all the images into a 3-layer hex array, then copy the big array into the Arduino code. Ardunio will allow you to decide how the animation be like with all the frames. You can even add sensors and make the display interactive!
 
 ### Install Softwares
 1. Download and install [Arduino IDE](https://www.arduino.cc/en/Main/Software)
-2. Open Terminal and check python version, type in `python -V`. In this tutorial we'll use python 2. By default MacOS comes with python 2.7, if you have python 3 by default when typing in `python -V`, try `python2 -V` instead. Download [python 2.7](https://www.python.org/download/releases/2.7.6/) if you are on Windows.
+2. Open Terminal and check python version
+  ```
+  $ python -V
+  ```
+  In this tutorial we'll use python 2. By default MacOS comes with python 2.7, if you have python 3 by default when typing in `python -V`, try `python2 -V` instead. Download [python 2.7](https://www.python.org/download/releases/2.7.6/) if you are on Windows.
 3. Run `pip install Pillow` in terminal to install Pillow in python, a image processing library. If you don't have pip installed
-```
-$ curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
-$ sudo python get-pip.py
-```
+  ```
+  $ curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+  $ sudo python get-pip.py
+  ```
 
 
 set up
